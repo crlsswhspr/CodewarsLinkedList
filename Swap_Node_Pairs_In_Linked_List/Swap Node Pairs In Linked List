@@ -1,1 +1,18 @@
+from preloaded import Node
 
+def swap_pairs(head):
+    dummy = Node(0)
+    dummy.next = head
+    current = dummy
+    
+    while current.next and current.next.next:
+        first_node = current.next
+        second_node = current.next.next
+        
+        current.next = second_node
+        first_node.next = second_node.next
+        second_node.next = first_node
+        
+        current = first_node
+    
+    return dummy.next
